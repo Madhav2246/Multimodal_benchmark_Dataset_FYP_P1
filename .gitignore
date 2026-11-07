@@ -39,15 +39,11 @@ data/raw/**
 # Intermediate processed arrays — large .npy files excluded
 # Keep the directory structure via .gitkeep files
 # -----------------------------------------------------------------------
-data/intermediate/**/*.npy
-!data/intermediate/**/.gitkeep
 
 # -----------------------------------------------------------------------
 # Benchmark tile .npy arrays — exclude from Git (publish via Zenodo/HF)
 # Keep all JSON metadata and PNG QC figures
 # -----------------------------------------------------------------------
-data/benchmark/**/tiles/**/*.npy
-!data/benchmark/**/tiles/**/.gitkeep
 
 # Keep these tracked in Git:
 #   data/benchmark/global_manifest.json
@@ -67,3 +63,6 @@ data/benchmark/**/tiles/**/*.npy
 # External catalogues (re-download; see PROJECT_GUIDE.md)
 data/external/**
 !data/external/**/.gitkeep
+
+# The benchmark tiles and per-region intermediate arrays ARE tracked (small files, ~200 MB total).
+# Only the big raw downloads below stay out of git (see PROJECT_GUIDE.md to re-download).
