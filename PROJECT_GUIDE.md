@@ -56,6 +56,11 @@ Splits (`configs/splits.yaml`, by region, never by tile):
 train 17 · val 3 (hyginus, endymion, plato) · test 8 (taurus_littrow, mare_crisium,
 tycho, tsiolkovsky, copernicus, ingenii, moscoviense, korolev).
 
+Ready-made pictures: `paper/figures/regions/<region>_optical_100m.png` (native 100 m WAC crop)
+and `<region>_layers.png` (optical, elevation, slope, hillshade, thermal side by side) for all
+28 regions. Raw WAC GeoTIFFs (7 files, 497 MB each) are **not** in git; `run_pipeline.py`
+downloads them to `data/raw/optical/`, or ask the owner for the shared copy.
+
 ## 4. How to interpret the results
 
 All numbers below are on the **8 held-out test regions** (`outputs/tables/`, `paper/tables/`).
@@ -176,6 +181,7 @@ python run_pipeline.py --region <id>                   # build one region (resum
 python run_pipeline.py --all                           # rebuild everything (downloads WAC tiles)
 python -m src.pipeline.extract_diurnal                 # tile-level diurnal curves
 python -m src.experiments.dataset_stats                # tables, montage, map
+python -m src.experiments.export_region_images       # per-region PNGs -> paper/figures/regions/
 python -m src.experiments.registration_check           # NCC alignment check
 python -m src.experiments.crater_alignment             # crater alignment check (needs Robbins CSV)
 python -m src.experiments.baselines --logo             # baselines + LORO (~2.5 h CPU)
